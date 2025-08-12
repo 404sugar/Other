@@ -4,7 +4,7 @@ async function unlock() {
   const password = document.getElementById('password').value;
 
   try {
-    const res = await fetch("filmcrypt.txt");
+    const res = await fetch("othercrypt.txt");
     const rawText = await res.text();
     const encryptedToken = rawText.replace(/^\uFEFF/, '').trim();
 
@@ -27,7 +27,7 @@ async function unlock() {
 }
 
 async function upload() {
-  const repo = 'Film';
+  const repo = 'Other';
   const owner = '404sugar';
 
   const imageFile = document.getElementById('imageFile').files[0];
@@ -46,7 +46,7 @@ async function upload() {
     const newEntry = `{${imageEntry ? `"${imageEntry}", ` : ""}"${review.replace(/\n/g, '\\n')}", "${rating}", "${date}"}\n`;
 
     try {
-      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/Film.txt`, {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/Other.txt`, {
         headers: { Authorization: `token ${token}` }
       });
 
@@ -62,14 +62,14 @@ async function upload() {
 
       const updatedContent = decoded + newEntry;
 
-      await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/Film.txt`, {
+      await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/Other.txt`, {
         method: 'PUT',
         headers: {
           Authorization: `token ${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: `Update Film.txt with new entry`,
+          message: `Update Other.txt with new entry`,
           content: btoa(unescape(encodeURIComponent(updatedContent))),
           sha: data.sha
         })
