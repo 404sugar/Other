@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Film Posts</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="script.js" defer></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 40px;
+      max-width: 100%;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      font-size: 14px;
+    }
+    #uploadUI {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upload Film Posts</h1>
+
+  <div id="unlockUI">
+    <p><strong>Enter password to unlock uploader:</strong></p>
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="unlock()">Unlock</button>
+  </div>
+
+  <div id="uploadUI">
+    <input type="file" id="imageFile" accept="image/*" /><br>
+    <input type="text" id="rating" placeholder="Rating (optional)" /><br>
+    <textarea id="review" placeholder="Write your thoughts..." style="min-height: 5vh; resize: vertical;"></textarea><br>
+    <button onclick="upload()">Upload</button>
+  </div>
+</body>
+</html>
